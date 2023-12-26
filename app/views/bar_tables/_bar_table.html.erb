@@ -1,0 +1,10 @@
+<div id="<%= dom_id bar_table %>">
+  <div class="mt-4 p-5 bg-black text-white rounded">
+    <h1><%= bar_table.first_name %> <%= bar_table.last_name %></h1>
+    <p><%= bar_table.email %> | <%= bar_table.phone %> | <%= bar_table.twitter %></p>
+    <%= link_to "Edit this bar table", edit_bar_table_path(@bar_table), class:"btn btn-warning" %>
+    <%= link_to "Back to bar tables", bar_tables_path,class:"btn btn-secondary" %><br><br>
+
+    <%= button_to "Destroy this bar table", @bar_table, method: :delete, class:"btn btn-danger" %>
+  </div>
+</div>

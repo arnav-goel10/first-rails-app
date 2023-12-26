@@ -1,0 +1,48 @@
+<%= form_with(model: bar_table) do |form| %>
+  <% if bar_table.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bar_table.errors.count, "error") %> prohibited this bar_table from being saved:</h2>
+
+      <ul>
+        <% bar_table.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <br>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First Name"%>
+    <br>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :last_name , class: "form-control",placeholder: "Last Name"%>
+    <br>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :email , class: "form-control",placeholder: "E-Mail"%>
+    <br>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :phone , class: "form-control",placeholder: "Phone Number"%>
+    <br>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :twitter , class: "form-control",placeholder: "Twitter Handle"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :user_id , id: :bar_table_user_id, class: "form-control",value: current_user.id,type: :hidden%>
+  </div>
+
+  <div>
+    <br>
+    <%= form.submit class:"btn btn-success"%>
+    <br>
+  </div>
+<% end %>

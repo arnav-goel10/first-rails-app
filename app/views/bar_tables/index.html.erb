@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+
+<h1>Bar tables</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bar_tables.each do |bar_table| %>
+  <% if bar_table.user == current_user %>
+      <tr>
+        <td><%= link_to bar_table.first_name+" "+bar_table.last_name , bar_table %></td>
+        <td><%= bar_table.email %></td>
+        <td><%= bar_table.phone %></td>
+        <td><%= bar_table.twitter %></td>
+        <td><%= link_to 'Delete', bar_table, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm"%></td>
+      </tr>
+  <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New bar table", new_bar_table_path, class:"btn btn-success"%>
+
+<% else %>
+  <%= render "home/index", bar_table: @home %>
+<% end %>
